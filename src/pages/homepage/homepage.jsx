@@ -10,11 +10,13 @@ import SVN from "../../assets/servicenow.png"
 import SNFLK from "../../assets/snflk.png"
 import paypal from "../../assets/payapl.png"
 import microsoft from "../../assets/microsoft.png"
+import { SearchBar } from '../../componenets/SearchBar'
 
 export const HomePage = () => {
   
   return (
     <div className="homepage">
+      <SearchBar />
       <div className="companies">
         {COMPANIES.map((company) => (
           <CompanyProfile 
