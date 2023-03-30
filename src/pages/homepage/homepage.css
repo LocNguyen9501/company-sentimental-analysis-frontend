@@ -1,0 +1,34 @@
+.companies {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.company {
+    flex: 0 0 calc(25% - 1em);
+    min-height: 120px;
+    margin: 0.25em 0.5em;
+}
+
+.company img {
+    width: 300px;
+}
+
+.company.description {
+    text-align: center;
+}
+
+.company:hover {
+    transition: 0.3s ease-in;
+    cursor: pointer;
+}
+
+.homepage {
+    margin:20px
+}
+
+.companyImage {
+    border-radius: 20px;
+}
