@@ -13,7 +13,7 @@
 }
 
 .company img {
-    width: 300px;
+    width: 250px;
 }
 
 .company.description {
@@ -23,12 +23,13 @@
 .company:hover {
     transition: 0.3s ease-in;
     cursor: pointer;
+    transform: scale(1.05);
 }
 
 .homepage {
-    margin:20px
+    margin:25px
 }
 
 .companyImage {
-    border-radius: 20px;
+    border-radius: 25px;
 }
