@@ -7,9 +7,11 @@
 }
 
 .company {
-    flex: 0 0 calc(25% - 1em);
+    flex: 0 0 calc(20% - 1em);
     min-height: 120px;
     margin: 0.25em 0.5em;
+    transition: 500ms;
+    padding: 10px;
 }
 
 .company img {

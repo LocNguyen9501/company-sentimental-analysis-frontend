@@ -1,0 +1,45 @@
+.item-container {
+    display: flex; 
+    flex-direction: column;
+    margin: 20px 30px 20px 30px;
+}
+
+.company-overview {
+    display: flex;
+    flex-direction: row;
+}
+
+.company-image {
+    height: 250px;
+    border-radius: 20px;
+    position: relative;
+    float: right;
+}
+
+.overview {
+    margin-left: 50px;
+    font-size: larger;
+    text-align: left;
+}
+
+.rating-text {
+    text-align: left;
+    margin-left:20px;
+}
+
+.analysis {
+    background-color:antiquewhite;
+    height: 200px;
+    margin-top: 40px;
+}
+
+.header {
+    color: black;
+    left: 0;
+    padding-left: 1rem;
+    position: sticky;
+    width: 100%;
+    font-size: larger;
+    text-align: left;
+}
+
