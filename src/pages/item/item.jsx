@@ -15,9 +15,8 @@ export const Item = () => {
         <p className="overview">
           {companyInfo.description}
         </p>
-        
       </div>
-
+      
       <div className='analysis'>
         <p className='header'>
           <b>Our Analysis:</b>
