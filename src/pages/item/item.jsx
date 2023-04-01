@@ -19,7 +19,9 @@ export const Item = () => {
       </div>
 
       <div className='analysis'>
-        <p className='header'>Our Analysis:</p>
+        <p className='header'>
+          <b>Our Analysis:</b>
+        </p>
         <p className="rating-text">
           {companyInfo.rating}
         </p>
