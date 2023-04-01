@@ -7,7 +7,6 @@
 .company-overview {
     display: flex;
     flex-direction: row;
-    background-color: white;
     border-radius: 10px;
     padding-top: 10px;
     padding-bottom: 20px;
@@ -34,7 +33,7 @@
 .analysis {
     height: 200px;
     margin-top: 40px;
-    background-color: white;
+    background-color: rgb(231, 231, 231);
     border-radius: 5px;
 }
 
