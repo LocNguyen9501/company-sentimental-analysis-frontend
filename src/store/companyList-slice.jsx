@@ -10,8 +10,9 @@ import SNFLK from "../assets/snflk.png"
 import paypal from "../assets/payapl.png"
 import microsoft from "../assets/microsoft.png"
 
-const initialState = [
-    {
+const initialState = {
+  wordSearch: "",
+  list:[{
       id:1,
       companyname: "DropBox",
       rating: "8/10",
@@ -81,12 +82,17 @@ const initialState = [
       companyimage: microsoft,
       description: "Microsoft is the largest vendor of computer software in the world. It is also a leading provider of cloud computing services, video games, computer and gaming hardware, search and other online services. Microsoft's corporate headquarters is located in Redmond, Wash., and it has offices in more than 60 countries."
     },
-];
+]};
 
 const companyListSlice = createSlice({
     name:"companyDetails",
     initialState,
-    reducers:{}
+    reducers:{
+      setWordEntered(state, action) {
+        state.wordSearch = action.payload;
+      }
+    }
 });
 
+export const {setWordEntered} = companyListSlice.actions;
 export default companyListSlice.reducer;

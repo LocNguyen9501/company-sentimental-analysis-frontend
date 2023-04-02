@@ -1,46 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./SearchBar.css";
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
+import { setWordEntered } from '../store/companyList-slice';
+import { useDispatch } from 'react-redux';
 
 export const SearchBar = () => {
-    const [filteredData, setFilteredData] = React.useState([]);
-    const [wordEntered, setWordEntered] = React.useState("");
+  const [userInput, setUserInput] = useState(); 
+  const dispatch = useDispatch();
+  const [isSearched, setIsSearched] = useState(false);
+
+  const handleSearchIconClicked = () => {
+    dispatch(setWordEntered(userInput));
+    setIsSearched(!isSearched);
+  };
+
+  const handleWordChange = (event) => {
+    const searchWord = event.target.value;
+    setUserInput(searchWord);
+    if (searchWord ==="") {
+      handleClearInput();
+    }
+  }
+
+  const handleClearInput = () => {
+    setUserInput("");
+    dispatch(setWordEntered(""));
+    setIsSearched(!isSearched);
+  }
   
-    const handleFilter = (event) => {
-      const searchWord = event.target.value;
-      setWordEntered(searchWord);
-      
-  
-    //   if (searchWord === "") {
-    //     setFilteredData([]);
-    //   } else {
-    //     setFilteredData(newFilter);
-    //   }
-    };
-  
-    const clearInput = () => {
-      setFilteredData([]);
-      setWordEntered("");
-    };
-  
-    return (
-      <div className="search">
-        <div className="searchInputs">
-          <input
-            type="text"
-            placeholder='Search...'
-            value={wordEntered}
-            onChange={handleFilter}
-          />
-          <div className="searchIcon">
-            {filteredData.length === 0 ? (
-              <SearchIcon />
-            ) : (
-              <CloseIcon id="clearBtn" onClick={clearInput} />
-            )}
-          </div>
+  return (
+    <div className="search">
+      <div className="searchInputs">
+        <input
+          type="text"
+          placeholder='Search...'
+          value={userInput}
+          onChange={handleWordChange}
+        />
+        <div className="searchIcon">
+          {isSearched
+          ? <CloseIcon onClick={handleClearInput}/>
+          : <SearchIcon onClick={handleSearchIconClicked}/>
+          }
         </div>
       </div>
-    )
+    </div>
+  )
 }
