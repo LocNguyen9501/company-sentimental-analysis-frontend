@@ -8,16 +8,17 @@ import { useDispatch } from 'react-redux';
 export const SearchBar = () => {
   const [userInput, setUserInput] = useState(); 
   const dispatch = useDispatch();
-  const [isSearched, setIsSearched] = useState(false);
+  const [searchIconActive, setSearchIconActive] = useState(true);
 
   const handleSearchIconClicked = () => {
     dispatch(setWordEntered(userInput));
-    setIsSearched(true);
+    setSearchIconActive(false);
   };
 
   const handleWordChange = (event) => {
     const searchWord = event.target.value;
     setUserInput(searchWord);
+    setSearchIconActive(true);
     if (searchWord ==="") {
       handleClearInput();
     }
@@ -26,7 +27,7 @@ export const SearchBar = () => {
   const handleClearInput = () => {
     setUserInput("");
     dispatch(setWordEntered(""));
-    setIsSearched(false);
+    setSearchIconActive(true);
   }
   
   return (
@@ -39,7 +40,7 @@ export const SearchBar = () => {
           onChange={handleWordChange}
         />
         <div className="searchIcon">
-          {isSearched
+          {!searchIconActive
           ? <CloseIcon onClick={handleClearInput}/>
           : <SearchIcon onClick={handleSearchIconClicked}/>
           }
