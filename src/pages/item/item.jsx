@@ -4,8 +4,9 @@ import { useParams } from 'react-router-dom'
 import './item.css'
 
 export const Item = () => {
-  const { id } = useParams();
-  const companyInfo = useSelector((state) => state.companyList.list.filter(c => c.id == id))[0];
+  const { name } = useParams();
+  const companyInfo = useSelector((state) => 
+  state.companyList.list.filter(c => c.companyname == name))[0];
 
   return (
     <div className="item-container">

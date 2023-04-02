@@ -1,16 +1,24 @@
 import React from "react";
 import "./homepage.css"
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { setWordEntered } from "../../store/companyList-slice";
 
 export const CompanyProfile = (props) => {
-  const { id, companyname, rating, companyimage } = props.data;
+  const { companyname, rating, companyimage } = props.data;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const clearPageHistory = () => {
+    dispatch(setWordEntered(""))
+  }
 
   return (
     <div 
         className="company"
         onClick={() => {
-          navigate('/company-details/'+id) 
+          clearPageHistory();
+          navigate('/company-details/'+companyname) 
         }}
     >
       <img className="companyImage" src={companyimage} />
