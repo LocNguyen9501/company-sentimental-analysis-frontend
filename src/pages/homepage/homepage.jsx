@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CompanyProfile } from './companyprofile'
 import { SearchBar } from '../../componenets/SearchBar'
 
@@ -9,7 +9,6 @@ export const HomePage = () => {
   const [filteredData, setFilteredData] = React.useState([]);
   
   useEffect(() => {
-    console.log(wordEntered);
     let newFilterData = companyList.filter((companyInfo) => {
       return companyInfo.companyname.toLowerCase().includes(wordEntered.toLowerCase())
     });

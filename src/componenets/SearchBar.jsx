@@ -16,7 +16,6 @@ export const SearchBar = () => {
     }
   };
 
-
   const handleSearchIconClicked = () => {
     dispatch(setWordEntered(userInput));
     setSearchIconActive(false);
@@ -26,9 +25,6 @@ export const SearchBar = () => {
     const searchWord = event.target.value;
     setUserInput(searchWord);
     setSearchIconActive(true);
-    if (searchWord ==="") {
-      handleClearInput();
-    }
   }
 
   const handleClearInput = () => {

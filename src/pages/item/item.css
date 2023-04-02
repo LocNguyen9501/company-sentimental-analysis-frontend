@@ -47,3 +47,24 @@
     text-align: left;
 }
 
+.backButtonContainer {
+    text-align: left;
+    flex-direction: row;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.backButtonContainer :hover {
+    cursor: pointer;
+}
+
+.backButtonIcon {
+    height: 10px;
+    margin-right: 12px;
+    color: #156BC1;
+}
+
+.textGoBack {
+    margin-top: 2px;
+    color: #156BC1;
+}

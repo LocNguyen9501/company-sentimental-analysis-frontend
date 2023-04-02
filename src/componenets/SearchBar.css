@@ -35,7 +35,10 @@ input:focus {
 .searchIcon svg {
     font-size: 35px;
 }
-  
+
+.searchIcon:hover {
+    cursor: pointer;
+} 
   
 #clearBtn {
     cursor: pointer;
