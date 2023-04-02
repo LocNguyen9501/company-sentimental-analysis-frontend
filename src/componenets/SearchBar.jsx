@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./SearchBar.css";
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
@@ -9,6 +9,15 @@ export const SearchBar = () => {
   const [userInput, setUserInput] = useState(); 
   const dispatch = useDispatch();
   const [searchIconActive, setSearchIconActive] = useState(true);
+
+  const handleKeyDown = event => {
+    console.log('User pressed: ', event.key);
+
+    if (event.key === 'Enter') {
+      handleSearchIconClicked();
+    }
+  };
+
 
   const handleSearchIconClicked = () => {
     dispatch(setWordEntered(userInput));
@@ -38,6 +47,7 @@ export const SearchBar = () => {
           placeholder='Search name of company...'
           value={userInput}
           onChange={handleWordChange}
+          onKeyDown={handleKeyDown}
         />
         <div className="searchIcon">
           {!searchIconActive

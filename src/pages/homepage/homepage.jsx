@@ -9,6 +9,7 @@ export const HomePage = () => {
   const [filteredData, setFilteredData] = React.useState([]);
   
   useEffect(() => {
+    console.log(wordEntered);
     let newFilterData = companyList.filter((companyInfo) => {
       return companyInfo.companyname.toLowerCase().includes(wordEntered.toLowerCase())
     });

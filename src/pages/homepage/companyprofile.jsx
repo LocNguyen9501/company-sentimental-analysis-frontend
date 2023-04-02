@@ -15,11 +15,11 @@ export const CompanyProfile = (props) => {
 
   return (
     <div 
-        className="company"
-        onClick={() => {
-          clearPageHistory();
-          navigate('/company-details/'+companyname) 
-        }}
+      className="company"
+      onClick={() => {
+        clearPageHistory();
+        navigate('/company-details/'+companyname) 
+      }}
     >
       <img className="companyImage" src={companyimage} />
       <div className="description">
