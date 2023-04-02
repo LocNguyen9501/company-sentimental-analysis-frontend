@@ -12,7 +12,7 @@ export const SearchBar = () => {
 
   const handleSearchIconClicked = () => {
     dispatch(setWordEntered(userInput));
-    setIsSearched(!isSearched);
+    setIsSearched(true);
   };
 
   const handleWordChange = (event) => {
@@ -26,7 +26,7 @@ export const SearchBar = () => {
   const handleClearInput = () => {
     setUserInput("");
     dispatch(setWordEntered(""));
-    setIsSearched(!isSearched);
+    setIsSearched(false);
   }
   
   return (
@@ -34,7 +34,7 @@ export const SearchBar = () => {
       <div className="searchInputs">
         <input
           type="text"
-          placeholder='Search...'
+          placeholder='Search name of company...'
           value={userInput}
           onChange={handleWordChange}
         />
