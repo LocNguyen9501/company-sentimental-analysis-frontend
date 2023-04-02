@@ -11,8 +11,6 @@ export const SearchBar = () => {
   const [searchIconActive, setSearchIconActive] = useState(true);
 
   const handleKeyDown = event => {
-    console.log('User pressed: ', event.key);
-
     if (event.key === 'Enter') {
       handleSearchIconClicked();
     }
