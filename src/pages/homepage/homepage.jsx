@@ -19,12 +19,7 @@ export const HomePage = () => {
     <div className="homepage">
       <SearchBar />
       <div className="companies">
-        {wordEntered == ""
-        ?
-        companyList.map((company) => (
-          <CompanyProfile data={company} />
-        ))
-        : filteredData.length == 0 
+        {filteredData.length == 0 
           ? <p className='no-found'>Sorry we don't have the data about this company</p>
           :
           filteredData.map((company) => (
