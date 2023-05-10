@@ -4,9 +4,9 @@ const initialState = [
     {
         companyName:"Dropbox",
         rating:[
-            { name: "Positive", percent: 0.4 },
-            { name: "Neutral", percent: 0.4 },
-            { name: "Negative", percent: 0.3 },
+            { name: "Positive", percent: 0.8 },
+            { name: "Neutral", percent: 0.1 },
+            { name: "Negative", percent: 0.1 },
         ],
         normalize: 0.678,
     }
