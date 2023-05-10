@@ -2,6 +2,8 @@ import "./Chart.css";
 import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Sector } from "recharts";
 
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
+
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
   const {
@@ -91,7 +93,7 @@ export default function Chart(props) {
                 innerRadius={80}
                 outerRadius={120}
                 fill="#8884d8"
-                dataKey="value"
+                dataKey="percent"
                 onMouseEnter={onPieEnter}
             />
         </PieChart>
