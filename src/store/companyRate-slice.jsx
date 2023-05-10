@@ -32,7 +32,7 @@ const initialState = [
         },
         normalize: 0.678,
     }
-]
+];
 
 const companyRateSlice = createSlice({
     name:"companyRatings",
