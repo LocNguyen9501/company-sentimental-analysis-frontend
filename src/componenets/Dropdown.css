@@ -1,5 +1,10 @@
 .select {
    padding: 5px;
    border-radius: 5px;
-   margin-left: 50px;
+   margin-left: 5px;
+}
+
+.interval {
+    display: flex;
+    justify-content: center;
 }

@@ -35,7 +35,11 @@ export const Item = () => {
         <p className='header'>
           <b>Our Sentimental Analysis:</b>
         </p>
-        <Dropdown options={['day', 'week', 'month', 'year', 'allTime']} onOptionChange={handleOptionChange} />
+        <div className='interval'>
+          <b className='label'>Select Interval: </b>
+          <Dropdown options={['day', 'week', 'month', 'year', 'allTime']} onOptionChange={handleOptionChange} />
+        </div>
+       
         <Chart data={companyRating.rating} selectedOption={selectedOption}/>
       </div>
       

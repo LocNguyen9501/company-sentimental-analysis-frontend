@@ -8,3 +8,8 @@
     display: flex;
     justify-content: center;
 }
+
+.label {
+    padding-top: 3px;
+    display: inline-flex;
+}
