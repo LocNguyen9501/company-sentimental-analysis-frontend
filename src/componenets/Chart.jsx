@@ -1,8 +1,8 @@
 import "./Chart.css";
 import React, { useCallback, useState } from "react";
-import { PieChart, Pie, Sector } from "recharts";
+import { PieChart, Pie, Sector, Cell } from "recharts";
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
+const COLORS = ['#2ECC71', '#FFC300', '#FF5733'];
 
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
@@ -31,7 +31,7 @@ const renderActiveShape = (props) => {
 
   return (
     <g>
-      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+      <text x={cx} y={cy} dy={8} textAnchor="middle" fill="#1C2833">
         {payload.name}
       </text>
       <Sector
@@ -95,7 +95,13 @@ export default function Chart(props) {
                 fill="#8884d8"
                 dataKey="percent"
                 onMouseEnter={onPieEnter}
-            />
+            >
+                {
+                    [0,1,2].map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index]}/>
+                    ))
+                }
+            </Pie>
         </PieChart>
     </div>
     
