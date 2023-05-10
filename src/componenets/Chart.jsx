@@ -87,7 +87,7 @@ export default function Chart(props) {
             <Pie
                 activeIndex={activeIndex}
                 activeShape={renderActiveShape}
-                data={props.data.rating}
+                data={props.data[props.selectedOption]}
                 cx={280}
                 cy={180}
                 innerRadius={80}
