@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
 import './item.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Chart from "../../componenets/Chart";
 
 export const Item = () => {
   const { name } = useParams();
@@ -26,11 +27,9 @@ export const Item = () => {
       
       <div className='analysis'>
         <p className='header'>
-          <b>Our Analysis:</b>
+          <b>Our Sentimental Analysis:</b>
         </p>
-        <p className="rating-text">
-          {companyInfo.rating}
-        </p>
+        <Chart />
       </div>
       
     </div>
