@@ -6,7 +6,7 @@ import { SearchBar } from '../../componenets/SearchBar'
 export const HomePage = () => {
   const companyList = useSelector((state) => state.companyList.list);
   const wordEntered = useSelector((state) => state.companyList.wordSearch);
-  const rating = useSelector((state) => state.companyRates);
+  
   const [filteredData, setFilteredData] = React.useState([]);
   
   useEffect(() => {
