@@ -7,10 +7,11 @@ import Chart from "../../componenets/Chart";
 
 export const Item = () => {
   const { name } = useParams();
-  const companyInfo = useSelector((state) => 
-  state.companyList.list.filter(c => c.companyname == name))[0];
+  const companyInfo = useSelector((state) => state.companyList.list.filter(c => c.companyname == name))[0];
+  const companyRating = useSelector((state) => state.companyRate.filter(c => c.companyName == "Dropbox"))[0];
   const navigate = useNavigate();
 
+  console.log(companyRating)
   return (
     <div className="item-container">
       <div className='backButtonContainer' onClick={() => navigate(-1)}>
@@ -29,7 +30,7 @@ export const Item = () => {
         <p className='header'>
           <b>Our Sentimental Analysis:</b>
         </p>
-        <Chart />
+        <Chart data={companyRating}/>
       </div>
       
     </div>
