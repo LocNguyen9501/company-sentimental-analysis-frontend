@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { setWordEntered } from "../../store/companySearch-slice";
 import { useSelector } from "react-redux";
-import axios from 'axios';
 
 export const CompanyProfile = (props) => {
   const { companyName, companyimage, normalize } = props.data;
