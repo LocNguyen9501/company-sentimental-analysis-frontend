@@ -31,6 +31,15 @@
     margin:25px
 }
 
+.centerContainer {
+    position: relative;
+    top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
 .companyImage {
     border-radius: 25px;
 }

@@ -6,6 +6,7 @@ import { setWordEntered } from "../../store/companySearch-slice";
 import { useSelector } from "react-redux";
 
 export const CompanyProfile = (props) => {
+  console.log(props.data)
   const { companyName, companyimage, normalize } = props.data;
   const isSearchResultActive = useSelector((state) => state.companySearch.isActive);
   const navigate = useNavigate();

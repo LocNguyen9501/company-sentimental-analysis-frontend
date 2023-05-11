@@ -2,30 +2,29 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { CompanyProfile } from './companyprofile'
 import { SearchBar } from '../../componenets/SearchBar'
-import axios from 'axios';
-
+import { fetchCompanyInfo } from '../../store/companySearch-slice';
+import ClipLoader from "react-spinners/ClipLoader";
+import './homepage.css'
 
 export const HomePage = () => {
   const companyInitialList = useSelector((state) => state.companyList);
   const companySearchInfo = useSelector((state) => state.companySearch);
   const isSearchResultActive = useSelector((state) => state.companySearch.isActive);
-  const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState({});
+  const [isLoading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const url = "https://csds351-flask-backend.herokuapp.com/api/";
   
   useEffect(() => {
     const fetchSearchData = async () => {
-      // const response = await axios({
-      //   method: 'get',
-      //   url:url+companySearchInfo.wordEntered,
-      // });
+      setLoading(true);
       const response = await fetch(url+companySearchInfo.wordEntered+"/", {
         method:"GET",
-        
       });
-
-      console.log(response.body);
-      setFilteredData([companySearchInfo.company]);
+      const data = await response.json();
+      dispatch(fetchCompanyInfo(data));
+      setFilteredData(data);
+      setLoading(false);
     };
 
     if (isSearchResultActive == 1) {
@@ -35,21 +34,25 @@ export const HomePage = () => {
 
   return (
     <div className="homepage">
-      <SearchBar />
-      <div className="companies">
-        {isSearchResultActive == 0
+        <SearchBar />
+        {isLoading
         ?
-          companyInitialList.map((company) => (
-            <CompanyProfile data={company} />
-          ))
+          <div className="centerContainer">
+            <ClipLoader color="black" />
+          </div>
         :
-          filteredData.length == 0 
-            ? <p className='no-found'>Sorry we don't have the data about this company</p>
-            :
-            filteredData.map((company) => (
+        <div className="companies">
+          {isSearchResultActive == 0
+          ?
+            companyInitialList.map((company) => (
               <CompanyProfile data={company} />
-          ))}
-      </div>
+            ))
+          :
+            filteredData.normalize == null 
+              ? <p className='no-found'>Sorry we don't have the data about this company</p>
+              :<CompanyProfile data={filteredData} />
+          }
+        </div>}
     </div>
   )
 }
