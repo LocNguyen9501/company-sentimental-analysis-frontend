@@ -1,18 +1,18 @@
 import React, {useState}from 'react'
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './item.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Chart from "../../componenets/Chart";
 import Dropdown from '../../componenets/Dropdown';
 
-export const Item = () => {
-  const { name } = useParams();
-  const companyInfo = useSelector((state) => state.companyList.filter(c => c.companyName === name)[0]);
-  const navigate = useNavigate();
+export const ItemSearch = () => {
+  const companyInfo = useSelector((state) => state.companySearch.company)
   const [selectedOption, setSelectedOption] = useState('day');
+  const navigate = useNavigate();
+  const altImage = "https://logo.clearbit.com/"+companyInfo.companyName+".com";
 
-  const handleOptionChange = option => {
+  function handleOptionChange(option) {
     setSelectedOption(option);
   }
 
@@ -24,9 +24,9 @@ export const Item = () => {
       </div>
      
       <div className='company-overview'> 
-        <img className='company-image' src={companyInfo.companyimage}/>
+        <img className='company-image' src={companyInfo.companyimage ? companyInfo.companyimage : altImage}/>
         <p className="overview">
-          We will update the description of company very soon. Coming soon!
+          We will update description very soon soon!
         </p>
       </div>
       
@@ -38,7 +38,6 @@ export const Item = () => {
           <b className='label'>Select Interval: </b>
           <Dropdown options={['day', 'week', 'month', 'year', 'allTime']} onOptionChange={handleOptionChange} />
         </div>
-       
         <Chart data={companyInfo.rating} selectedOption={selectedOption}/>
       </div>
       

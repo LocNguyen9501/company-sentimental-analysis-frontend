@@ -1,28 +1,34 @@
-import React, { useEffect } from 'react'
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import { CompanyProfile } from './companyprofile'
 import { SearchBar } from '../../componenets/SearchBar'
+import axios from 'axios';
+
 
 export const HomePage = () => {
-  const companyList = useSelector((state) => state.companyList.list);
-  const wordEntered = useSelector((state) => state.companyList.wordSearch);
-  
-  const [filteredData, setFilteredData] = React.useState([]);
+  const companyInitialList = useSelector((state) => state.companyList);
+  const companySearchInfo = useSelector((state) => state.companySearch);
+  const isSearchResultActive = useSelector((state) => state.companySearch.isActive);
+  const [filteredData, setFilteredData] = useState([]);
+  const dispatch = useDispatch();
   
   useEffect(() => {
-    let newFilterData = companyList.filter((companyInfo) => {
-      return companyInfo.companyname.toLowerCase().includes(wordEntered.toLowerCase())
-    });
-    setFilteredData(newFilterData);
-  },[wordEntered]);
+    const fetchSearchData = async () => {
+      setFilteredData([companySearchInfo.company]);
+    };
+
+    if (isSearchResultActive == 1) {
+      fetchSearchData();
+    }
+  },[isSearchResultActive]);
 
   return (
     <div className="homepage">
       <SearchBar />
       <div className="companies">
-        {wordEntered == ""
+        {isSearchResultActive == 0
         ?
-          companyList.map((company) => (
+          companyInitialList.map((company) => (
             <CompanyProfile data={company} />
           ))
         :
