@@ -1,16 +1,18 @@
 import React, {useState}from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import './item.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Chart from "../../componenets/Chart";
 import Dropdown from '../../componenets/Dropdown';
+import { setSearchActive, setWordEntered } from '../../store/companySearch-slice';
 
 export const ItemSearch = () => {
   const companyInfo = useSelector((state) => state.companySearch.company)
   const [selectedOption, setSelectedOption] = useState('day');
   const navigate = useNavigate();
   const altImage = "https://logo.clearbit.com/"+companyInfo.companyName+".com";
+  const dispatch = useDispatch();
 
   function handleOptionChange(option) {
     setSelectedOption(option);
@@ -18,7 +20,10 @@ export const ItemSearch = () => {
 
   return (
     <div className="item-container">
-      <div className='backButtonContainer' onClick={() => navigate(-1)}>
+      <div className='backButtonContainer' onClick={() => {
+        dispatch(setSearchActive(0))
+        navigate(-1)
+      }}>
         <ArrowBackIcon className='backButtonIcon'/>
         <div className='textGoBack'>See All Companies</div>
       </div>
